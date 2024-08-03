@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Bishmaji.Models.Employee
+<form>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Name</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1"  required placeholder="Employee Name" asp-for="EmployeeName">
+    </div>
+    <div class="form-group">
+        <label for="SalaryFormControlInput1">Salary</label>
+        <input type="number" class="form-control" id="SalaryFormControlInput1" required placeholder="Salary" asp-for="Salary">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Department</label>
+        <select class="form-control" id="exampleFormControlSelect1" asp-for="Department" required>
+            @foreach (var item in ViewData["departments"] as List<Department>)
+            {
+                <option value="@item.DepartmentName">@item.DepartmentName</option>
+            }
+            
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2" asp-controller="Employee" asp-action="Add">Submit</button>
+</form>
